@@ -44,6 +44,16 @@ try:
     with engine.begin() as connection:
 
         connection.execute(text("SET ROLE seafood_app"))
+        logger_placeholder = None
+
+        connection.execute(text("""
+            TRUNCATE TABLE
+                source.shipments,
+                source.inventory,
+                source.orders
+        """))
+
+        print("Existing source data cleared successfully.")
 
         for table, config in datasets.items():
             file_path = RAW_DIR / config["file"]
