@@ -7,3 +7,7 @@ logs/
 .pytest_cache/
 .DS_Store
 .vscode/
+data/raw/*.csv
+data/processed/*
+logs/
+.env
